@@ -23,7 +23,7 @@ Early Flake Detection is in public beta.
 
 ## Overview
 
-Early Flake Detection is Datadog's mechanism to tackle test flakiness. By identifying tests that are newly added and running them multiple times, Datadog can detect a up to [75% of flaky tests][1] before they're merged to the default branch.
+Early Flake Detection is Datadog's mechanism to tackle test flakiness. By identifying tests that are newly added and running them multiple times, Datadog can detect flakiness before it reaches the default branch. A study shows that up to [75% of flaky tests][1] can be identified this way.
 
 ## How it works
 
@@ -47,7 +47,7 @@ Early Flake Detection normally works as follows:
 
 * A developer working in a feature branch writes a new test, commits and pushes the changes.
 * This test is retried automatically for this commit and every new commit in the feature branch, until the branch is merged.
-* Once the feature branch is merged, that new test is considered part of the known tests for the test service. That test is not considered new anymore.
+* After the feature branch is merged, that new test is considered part of the known tests for the test service. That test is not considered new anymore.
 
 {{< img src="continuous_integration/early_flake_detection_commits.png" alt="How Early Flake Detection works in your commits.">}}
 
@@ -55,23 +55,23 @@ Early Flake Detection normally works as follows:
 
 The excluded branches do not execute Early Flake Detection, that is, no test is ever retried in them.
 
-Additionally, what Early Flake Detection considers a new test is based on the tests that run in these branches: if a test has run in any of the excluded branches, it is **not** considered new anymore.
+Additionally, what Early Flake Detection considers a new test is based on the tests that run in these branches. If a test has run in any of the excluded branches, it is **not** considered new anymore.
 
 ## Set up a Datadog library
 Before setting up Early Flake Detection, you must configure [Test Visibility][5] for your particular language. If you are reporting data through the Agent, use v6.40 or 7.40 and later.
 
 ## Configuration
-Once you have set up your Datadog library for Test Visibility, configure Early Flake Detection from the [Test Service Settings page][6]:
+After you have set up your Datadog library for Test Visibility, configure Early Flake Detection from the [Test Service Settings page][6]:
 
 {{< img src="continuous_integration/early_flake_detection_test_settings.png" alt="Early flake Detection in Test Service Settings.">}}
 
-When clicking on **Configure** in the Early Flake Detection column you will see a modal such as this one:
+Click on **Configure** in the Early Flake Detection column to see this modal:
 
 {{< img src="continuous_integration/early_flake_detection_configuration_modal.png" alt="Early flake Detection configuration modal.">}}
 
-You will be able to toggle the status of Early Flake Detection for that test service and add a list of [**Excluded Branches**][4].
+In this modal you can toggle the status of Early Flake Detection and add a list of [**Excluded Branches**][4] for that test service.
 
-### How do I know that new tests are being detected?
+### How to check that new tests are detected
 
 There are facets to query sessions that run Early Flake Detection and new tests.
 
@@ -88,7 +88,7 @@ Additionally, retries for this test have the `@test.is_retry` tag set to `true`.
 
 ## Troubleshooting
 
-If you suspect there are issues with Early Flake Detection, disabling it is as simple as enabling it. Go to the [Test Service Settings][6], look for your test service, and click **Configure**.
+If you suspect there are issues with Early Flake Detection, go to the [Test Service Settings][6], look for your test service, and click **Configure**. Disable Early Flake Detection by clicking on the toggle.
 
 ### This new test is not being retried
 
@@ -100,9 +100,9 @@ This could be caused by a couple of reasons:
 
 ### A test was retried that is not new
 
-If the Datadog library can't successfully fetch the full list of known tests, it could cause the library to retry tests that are not new.
+If the Datadog library can't fetch the full list of known tests, the Datadog library may retry tests that are not new.
 
-There is a mechanism in place to prevent this error from slowing down your pipeline, but if it happens, please contact our support team at [Datadog Help][7].
+There is a mechanism to prevent this error from slowing down the CI pipeline, but if it happens, contact the support team at [Datadog Help][7].
 
 ## Further Reading
 
