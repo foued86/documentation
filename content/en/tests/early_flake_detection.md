@@ -90,11 +90,11 @@ Additionally, retries for this test have the `@test.is_retry` tag set to `true`.
 
 If you suspect there are issues with Early Flake Detection, go to the [Test Service Settings][6], look for your test service, and click **Configure**. Disable Early Flake Detection by clicking on the toggle.
 
-### This new test is not being retried
+### A new test is not being retried
 
 This could be caused by a couple of reasons:
 
-* This test has already run in a excluded branch, such as `staging`, `main` or `preprod`.
+* This test has already run in an excluded branch, such as `staging`, `main` or `preprod`.
 * This test is slower than 5 minutes. There is a mechanism not to run Early Flake Detection on tests that are too slow, since retrying these tests could cause significant delays in CI pipelines.
 
 
