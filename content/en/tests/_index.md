@@ -73,6 +73,7 @@ In addition to tests, Test Visibility provides visibility over the whole testing
 | {{< ci-details title="Benchmark tests support" >}}Automatic detection of performance statistics for benchmark tests.{{< /ci-details >}}                                                                          | {{< X >}} |                      |                        | {{< X >}} |           | {{< X >}} |                        |
 | {{< ci-details title="Parameterized tests" >}}Automatic detection of parameterized tests.{{< /ci-details >}}                                                                                                     | {{< X >}} |       {{< X >}}      |       {{< X >}}        | {{< X >}} | {{< X >}} | {{< X >}} |                        |
 | {{< ci-details title="Flaky Test Retries *" >}}Automatically retries failed flaky tests up to N times to avoid failing the build.{{< /ci-details >}}                                                             |           |       {{< X >}}      |                        |           |           |           |                        |
+| {{< ci-details title="Early flake detection *" >}}Automatically retry new tests to detect flakiness.{{< /ci-details >}}                                                                                   |           |       {{< X >}}      |       {{< X >}}        |           |           |           |                        |
 
 \* the feature is opt-in and needs to be enabled in the test service settings UI.
 
@@ -153,13 +154,13 @@ In order to filter using these configurations tags, [you must create facets for 
 {{< nextlink href="/tests/swift_tests" >}}Instrument Swift Tests with Browser RUM{{< /nextlink >}}
 {{< /whatsnext >}}
 
-If [Intelligent Test Runner][12] is enabled for .NET, Java, JavaScript, or Swift, per test code coverage information, including file names and line numbers covered by each test, are collected from your projects.
+If [Intelligent Test Runner][3] is enabled for .NET, Java, JavaScript, or Swift, per test code coverage information, including file names and line numbers covered by each test, are collected from your projects.
 
-When creating a [dashboard][8] or a [notebook][9], you can use test execution data in your search query, which updates the visualization widget options.
+When creating a [dashboard][4] or a [notebook][5], you can use test execution data in your search query, which updates the visualization widget options.
 
 ## Alert on test data
 
-When you evaluate failed or flaky tests, or the performance of a CI test on the [**Test Runs** page][10], click **Create Monitor** to create a [CI Test monitor][11].
+When you evaluate failed or flaky tests, or the performance of a CI test on the [**Test Runs** page][6], click **Create Monitor** to create a [CI Test monitor][7].
 
 ## Further reading
 
@@ -167,8 +168,8 @@ When you evaluate failed or flaky tests, or the performance of a CI test on the 
 
 [1]: https://app.datadoghq.com/ci/test-services
 [2]: /continuous_integration/explorer/facets/
-[8]: https://app.datadoghq.com/dashboard/lists
-[9]: https://app.datadoghq.com/notebook/list
-[10]: https://app.datadoghq.com/ci/test-runs
-[11]: /monitors/types/ci/
-[12]: /tests/code_coverage/
+[3]: /intelligent_test_runner/
+[4]: https://app.datadoghq.com/dashboard/lists
+[5]: https://app.datadoghq.com/notebook/list
+[6]: https://app.datadoghq.com/ci/test-runs
+[7]: /monitors/types/ci/
